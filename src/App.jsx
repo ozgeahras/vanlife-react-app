@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
+import Vans from "./components/Vans";
+import VanDetail from "./components/VanDetail";
 import "./server";
 import "./App.css";
-import Vans from "./components/Vans";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/vans" element={<Vans />} />
+        <Route path="/vans/:id" element={<VanDetail />} />
       </Routes>
     </BrowserRouter>
   );
