@@ -1,27 +1,15 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Vans() {
-  const [allVans, setAllVans] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/vans");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const jsonData = await response.json();
-        setAllVans(jsonData.vans);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
+  const [vans, setVans] = React.useState([]);
+  React.useEffect(() => {
+    fetch("/api/vans")
+      .then((res) => res.json())
+      .then((data) => setVans(data.vans));
   }, []);
 
-  const vanElements = allVans.map((van) => (
+  const vanElements = vans.map((van) => (
     <div key={van.id} className="van-tile">
       <Link to={`/vans/${van.id}`}>
         <img src={van.imageUrl} />
@@ -39,6 +27,7 @@ export default function Vans() {
 
   return (
     <div className="van-list-container">
+      <h1>Explore our van options</h1>
       <div className="van-list">{vanElements}</div>
     </div>
   );
