@@ -4,7 +4,6 @@ import { Link, useParams, useLocation } from "react-router-dom";
 export default function VanDetail() {
   const params = useParams();
   const location = useLocation();
-  console.log("location --> ", location);
 
   const [van, setVan] = React.useState(null);
 
