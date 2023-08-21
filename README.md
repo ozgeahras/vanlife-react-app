@@ -76,7 +76,7 @@ npm run dev
 
 ## Screenshots
 
-![App Screenshot](https://raw.githubusercontent.com/ozgeahras/vanlife-react-app/master/dist/screenshot.png)
+![App Screenshot](https://github.com/ozgeahras/vanlife-react-app/blob/master/src/assets/images/screenshot.png)
 
 ## About Me
 
