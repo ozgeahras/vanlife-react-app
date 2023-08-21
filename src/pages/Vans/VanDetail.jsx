@@ -6,8 +6,8 @@ export function loader({ params }) {
 }
 
 export default function VanDetail() {
-  const van = useLoaderData();
   const location = useLocation();
+  const van = useLoaderData();
 
   const search = location.state?.search || "";
   const type = location.state?.type || "all";

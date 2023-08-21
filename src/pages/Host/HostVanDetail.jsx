@@ -1,10 +1,10 @@
-import { Link, Outlet, NavLink, useLoaderData } from "react-router-dom";
+import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import { getHostVans } from "../../api";
 import { requireAuth } from "../../utils";
 
-export async function loader() {
-  await requireAuth();
-  return getHostVans();
+export async function loader({ params, request }) {
+  await requireAuth(request);
+  return getHostVans(params.id);
 }
 
 export default function HostVanDetail() {
@@ -33,6 +33,7 @@ export default function HostVanDetail() {
             <h4>${currentVan.price}/day</h4>
           </div>
         </div>
+
         <nav className="host-van-detail-nav">
           <NavLink
             to="."
@@ -41,14 +42,12 @@ export default function HostVanDetail() {
           >
             Details
           </NavLink>
-
           <NavLink
             to="pricing"
             style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Pricing
           </NavLink>
-
           <NavLink
             to="photos"
             style={({ isActive }) => (isActive ? activeStyles : null)}
